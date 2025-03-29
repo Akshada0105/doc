@@ -22,14 +22,9 @@ pipeline {
 
         stage('Push to Docker Hub') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', 
-                                                 usernameVariable: 'DOCKER_USER', 
-                                                 passwordVariable: 'DOCKER_PASSWORD')]) {
-                    script {
-                        sh 'echo $DOCKER_PASSWORD | docker login -u $DOCKER_USER --password-stdin'
-                        sh 'docker tag $IMAGE_NAME:latest $DOCKER_USER/docker:latest'
-                        sh 'docker push $DOCKER_USER/docker:latest'
-                    }
+                withCredentials([string(credentialsId 'akshada01', variable: 'akshada0105 ')]) {
+                    sh 'echo $DOCKER_PASSWORD | docker login -u akshada0105 (--add ur docker token here--)
+                    sh 'docker push akshada0105/docker:latest'
                 }
             }
         }
@@ -41,4 +36,3 @@ pipeline {
         }
     }
 }
-
